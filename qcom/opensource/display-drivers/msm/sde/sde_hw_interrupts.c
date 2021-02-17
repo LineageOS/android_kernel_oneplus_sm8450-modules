@@ -451,7 +451,6 @@ static void sde_hw_intr_dispatch_irq(struct sde_hw_intr *intr,
 	int start_idx;
 	int end_idx;
 	u32 irq_status;
-	u32 enable_mask;
 	unsigned long irq_flags;
 
 	if (!intr)
@@ -475,23 +474,8 @@ static void sde_hw_intr_dispatch_irq(struct sde_hw_intr *intr,
 				end_idx > intr->sde_irq_map_size)
 			continue;
 
-		/* Skip the interrupts which are not enabled */
-		if (!intr->cache_irq_mask[reg_idx])
-			continue;
-
-		/* Read interrupt status */
-		irq_status = SDE_REG_READ(&intr->hw, intr->sde_irq_tbl[reg_idx].status_off);
-
-		/* Read enable mask */
-		enable_mask = SDE_REG_READ(&intr->hw, intr->sde_irq_tbl[reg_idx].en_off);
-
-		/* and clear the interrupt */
-		if (irq_status)
-			SDE_REG_WRITE(&intr->hw, intr->sde_irq_tbl[reg_idx].clr_off,
-					irq_status);
-
-		/* Finally update IRQ status based on enable mask */
-		irq_status &= enable_mask;
+		irq_status = SDE_REG_READ(&intr->hw,
+				intr->sde_irq_tbl[reg_idx].status_off);
 
 		/*
 		 * Search through matching intr status from irq map.
