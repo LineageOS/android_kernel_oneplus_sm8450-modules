@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7198aac7_8236cefe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2025-05-11T01:45:32Z",
+      "side": 1,
+      "message": "I guess you can just do this? \n\nhttps://review.lineageos.org/c/LineageOS/android_device_osom_ingot/+/427217",
+      "revId": "7b000e26af3f8feed179ea0947a99c099e5de4e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
